@@ -1,0 +1,130 @@
+---
+title: "R Vocabulary"
+subtitle: "from *Advanced R* by Hadley Wickham"
+author: "Eric N. Moyer"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html: default
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+Here are my own explanations of terms listed in the *Vocabulary* chapter of 
+Hadley's book as important for R programmers to be aware of. Nothing here is 
+comprehensive; I just focus on the essential nature of each item.
+
+# The Basics
+
+## The First Functions to Learn
+
+**`?`**
+
+The question mark is used to get help on a specific topic.  For example, 
+`?sum()` will give you information about the `sum` function.  This works both in 
+the RStudio console and in interactive R launched from the command line.
+
+**`str(x)`**
+
+Prints to the console a nicely-formatted representation of the
+structure of `x`.  This is great for understanding objects that have different
+types of elements nested several layers deep.  However, for a complex object, it
+can be verbose, so sometimes starting with a high-level view via `names(x)` can
+be helpful.
+
+## Important Operators and Assignment
+
+**`match(v1, v2)`**
+
+Looks in vector `v2` for occurences of the elements of `v1`. 
+Returns a vector of the same length as `v1`, in which each element is the integer 
+position in `v2` of the *first* occurrence of the corresponding element of `v1`, or 
+`NA` if the element does not appear in `v2`. If `v2` is `NULL`, returns a vector 
+containing all `NA`s; if `v1` is `NULL`, returns a zero-length vector.
+
+**`%in%`**
+
+Very similar to `match`, except used as a binary operator (e.g., 
+`v1 %in% v2`), and, instead of returning a vector of integer positions, returns 
+a vector of logicals indicating whether the corresponding elements appeared in `v2`.
+
+**` <- `** and **`=`**
+
+These are both assignment operators and work very similarly, 
+but there are subtle differences.  If you are assigning a value to an object (e.g., 
+`a <- 1`) they will both work as expected.  However, if you are assigning a value 
+to an argument in a function call (e.g., `runif(100, sd = 1)`), they are different. 
+In this case, it is customary to use `=` because it does what is expected. If you 
+use ` <- ` here, what you are really doing is creating a new object and passing it 
+by position, which is probably not what you meant.
+
+**` <<- `**
+
+Similar to ` <- `, except where ` <- ` operates only in the environment 
+in which it is evaluated, either creating a new object or re-assigning the value of 
+an existing one, ` <<- ` searches throught the chain of environments, either re-
+assigning the value if the variable is found, or creating a new object in the global 
+environment.
+
+## Comparison
+
+## Basic Math
+
+## Functions to do with Functions
+
+## Logical and Sets
+
+## Vectors and Matrices
+
+## Automatic Coercion Rules (character > numeric > logical)
+
+## Making Vectors
+
+## Lists and data.frames
+
+## Control Flow
+
+## Apply & Friends
+
+# Common Data Structures
+
+## Date/Time
+
+## Character Manipulation
+
+## Factors
+
+## Array Manipulation
+
+# Statistics
+
+## Ordering and Tabulating
+
+## Linear Models
+
+## Miscellaneous Tests
+
+## Random Variables
+
+## Matrix Algebra
+
+# Working with R
+
+## Workspace
+
+## Help
+
+## Debugging
+
+# Input/Output
+
+## Output
+
+## Reading and Writing Data
+
+## Files and Directories
+
